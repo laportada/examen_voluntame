@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ mision.nombre }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="page">
+
+<header class="topbar">
+    <h1>Ver Misión</h1>
+    <div>
+        <a href="/dashboard" class="btn">Inicio</a>
+        <a href="/logout" class="btn btn-secondary">Cerrar Sesión</a>
+    </div>
+</header>
+
+<main class="main">
+
+    <!-- Tarjeta principal de la misión -->
+    <div class="card mission-card">
+        <h2>{{ mision.nombre }}</h2>
+
+        <p><strong>Líder:</strong> {{ mision.creador_nombre }}</p>
+        <p><strong>Fecha:</strong> {{ mision.fecha }}</p>
+        <p><strong>Voluntarios Nec.:</strong> {{ mision.voluntarios_necesarios }}</p>
+        <p><strong>Descripción:</strong> {{ mision.descripcion }}</p>
+
+        <!-- Tarjeta interna de voluntarios + botón -->
+        <div class="volunteers-card">
+            <h3>Voluntarios</h3>
+
+            {% if voluntarios %}
+                <ul>
+                    {% for v in voluntarios %}
+                        <li>{{ v.nombre }} {{ v.apellido }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No hay voluntarios aún.</p>
+            {% endif %}
+
+            {% if not es_voluntario and mision.fecha >= hoy %}
+                <a href="/misiones/voluntame/{{ mision.id }}" class="btn btn-voluntame">
+                    VoluntaMe
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

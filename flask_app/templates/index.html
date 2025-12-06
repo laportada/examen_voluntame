@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VoluntaMe - Inicio</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="page">
+    <div class="auth-container">
+        <h1>VoluntaMe</h1>
+        <div class="forms">
+            <!-- REGISTRO -->
+            <section class="card">
+                <h2>Registro</h2>
+
+                {% with mensajes = get_flashed_messages(category_filter=['register']) %}
+                {% if mensajes %}
+                    <ul class="errores">
+                    {% for msg in mensajes %}
+                        <li>{{ msg }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
+
+                <form action="/registro" method="post" class="form">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre">
+
+                    <label>Apellido:</label>
+                    <input type="text" name="apellido">
+
+                    <label>E-mail:</label>
+                    <input type="email" name="email">
+
+                    <label>Contraseña:</label>
+                    <input type="password" name="password">
+
+                    <label>Confirmar Contraseña:</label>
+                    <input type="password" name="confirm_password">
+
+                    <button type="submit">Registrarse</button>
+                </form>
+            </section>
+
+            <!-- LOGIN -->
+            <section class="card">
+                <h2>Inicio de Sesión</h2>
+
+                {% with mensajes = get_flashed_messages(category_filter=['login']) %}
+                {% if mensajes %}
+                    <ul class="errores">
+                    {% for msg in mensajes %}
+                        <li>{{ msg }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
+
+                <form action="/login" method="post" class="form">
+                    <label>E-mail:</label>
+                    <input type="email" name="email">
+
+                    <label>Contraseña:</label>
+                    <input type="password" name="password">
+
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

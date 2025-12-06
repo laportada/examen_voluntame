@@ -1,0 +1,123 @@
+body.page {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+.topbar {
+    background-color: #283593;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 {
+    margin: 0;
+}
+
+.main {
+    padding: 20px 30px;
+}
+
+.auth-container {
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.forms {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    min-width: 300px;
+    text-align: left;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form input,
+.form textarea {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    background-color: #3949ab;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #1e2d6f;
+}
+
+.btn-secondary {
+    background-color: #757575;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 15px;
+}
+
+.tabla th,
+.tabla td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tabla th {
+    background-color: #eeeeee;
+}
+
+.errores {
+    color: red;
+    list-style: none;
+    padding-left: 0;
+}
+.mission-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.volunteers-card {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #e0e0e0; /* gris como en el wireframe */
+  border-radius: 4px;
+}
+
+.volunteers-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.volunteers-card ul {
+  margin: 0 0 0.75rem 1.2rem;
+  padding: 0;
+}
+
+.btn-voluntame {
+  display: inline-block;
+  margin-top: 0.5rem;
+}

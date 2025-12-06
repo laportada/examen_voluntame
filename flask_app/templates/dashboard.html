@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VoluntaMe - Misiones</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body class="page">
+    <header class="topbar">
+      <h1>Bienvenido {{ usuario.nombre }}</h1>
+      <div>
+        <a href="/misiones/nueva" class="btn">Nueva Misión</a>
+        <a href="/logout" class="btn btn-secondary">Cerrar Sesión</a>
+      </div>
+    </header>
+
+    <main class="main">
+      <h2>Misiones Disponibles</h2>
+
+      {% with mensajes = get_flashed_messages(category_filter=['mision']) %}
+        {% if mensajes %}
+          <ul class="errores">
+            {% for msg in mensajes %}
+              <li>{{ msg }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Líder</th>
+            <th>Fecha</th>
+            <th>Volunt. Necesarios</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in misiones %}
+          <tr>
+            <td>{{ m.nombre }}</td>
+            <td>{{ m.creador_nombre }}</td>
+            <td>{{ m.fecha }}</td>
+            <td>{{ m.voluntarios_necesarios }}</td>
+            <td>
+              <a href="/misiones/ver/{{ m.id }}">Ver</a>
+              {% if m.usuario_id == session['usuario_id'] %}
+                | <a href="/misiones/editar/{{ m.id }}">Editar</a>
+                | <a href="/misiones/borrar/{{ m.id }}">Borrar</a>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

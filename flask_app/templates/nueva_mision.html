@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Misión</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="page">
+    <header class="topbar">
+        <h1>Nueva misión</h1>
+        <div>
+            <a href="/dashboard" class="btn">Inicio</a>
+            <a href="/logout" class="btn btn-secondary">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <main class="main">
+        {% with mensajes = get_flashed_messages(category_filter=['mision']) %}
+        {% if mensajes %}
+            <ul class="errores">
+            {% for msg in mensajes %}
+                <li>{{ msg }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+
+        <form action="/misiones/crear" method="post" class="form card">
+            <label>Nombre:</label>
+            <input type="text" name="nombre">
+
+            <label>Fecha:</label>
+            <input type="date" name="fecha">
+
+            <label>Voluntarios necesarios (2 a 20):</label>
+            <input type="number" name="voluntarios_necesarios">
+
+            <label>Descripción:</label>
+            <textarea name="descripcion" rows="4"></textarea>
+
+            <button type="submit">Guardar</button>
+        </form>
+    </main>
+</body>
+</html>
